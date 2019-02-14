@@ -15,6 +15,7 @@ __        __   _       _____      _             _       _
 1. [Git Basics]('#gitbasics')
 1. [HTML Basics]('#html')
 1. [CSS Basics]('#css')
+1. [Javascript Basics]('#jsbasics')
 1. [Node.js Basics]('#nodebasics')
 
 <a id='intro'></a>
@@ -321,8 +322,20 @@ p.reverse {
 
 When those colors need to be changed to be something less ugly, you can change it once, and have it apply everywhere (a concept to remember...).
 
+<a id='jsbasics'></a>
+# Javascript (Ecmascript / ES6) Basics - The Muscle
+This is the more exciting part of websites... making them actually interactable. Javascript is an implementation of Ecmascript, which is why you'll hear about ESX a lot in web development. Not every browser fully implements the Ecmascript standard which makes for some difficult programming at times... (internet explorer). But, there are ways around that. Before we get into that, let's explore the language.
+
+### Variables
+First things first, variables. A variable is something that holds a value. We can create variable in 3 ways in javascript:
+
+```js
+const a = 1
+
+```
+
 
 <a id='nodebasics'></a>
 # Node.js Basics
 
-Node.js is a server side language which implements Ecmascript. Ecmascript is the standard, and Javascript is the implementation of it, with each browser supporting various parts of the standard.
+Node.js is a server side language which uses Javascript as the primary language for the server. This makes web development fast as you only need a single language for the front and back parts of your web application.
