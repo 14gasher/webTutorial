@@ -1,0 +1,45 @@
+{
+  "name": "webtutorial",
+  "version": "1.0.0",
+  "description": "Tutorial for doing web based tasks",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "./node_modules/mocha/bin/mocha server/tests/**/*.js --exit",
+    "build": "./node_modules/.bin/babel frontend/scripts --out-dir frontend/lib && npx webpack && rm -rf frontend/lib",
+    "lint": "./node_modules/.bin/eslint --fix . --ext .js",
+    "rebuild": "npm run build && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/14gasher/influence.git"
+  },
+  "keywords": [
+    "html",
+    "js",
+    "css",
+    "git",
+    "node.js",
+    "tutorial",
+    "bash",
+    "tutorial"
+  ],
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.2.0",
+    "eslint": "^5.6.0",
+    "mocha": "^5.2.0",
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.3"
+  },
+  "author": "Asher Gunsay",
+  "license": "ISC"
+}
