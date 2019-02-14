@@ -1,0 +1,17 @@
+/*
+  This is a comment in CSS.
+  You can add these for notes, etc.
+*/
+
+p {
+  color: gray;
+}
+
+.myFirstClass {
+  color: purple;
+}
+
+#myFirstId {
+  font-size: 32px;
+  color: red;
+}

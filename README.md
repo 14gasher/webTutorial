@@ -207,12 +207,120 @@ Alright! You survived the gross stuff. Onto the reasons you came here, web devel
 
 ### Setup
 
-With your Text Editor, open up the minidemos/myFirstHtml.html file. 
+With your Text Editor, open up the minidemos/myFirstHtml.html file. Additionally, open the file with your web browser. You should notice that each of the elements already have some style defined to them. In the style tag near the top, try changing p color from gray to magenta. Refresh your webpage after saving the changes.
 
+You'll notice that the inline styled p is still black, even though the others are not. Inline styling is one way of ensuring that an element has a particular style.
+
+However, there is an even more powerful way: CSS. More on that later.
+
+### Terminology
+
+Now that we have seen some html, let's talk about terminology. An element can have parents and children. If something comes between the opening and closing element's tags, that thing is a child of that element, and likewise, that element is the parent of that child. This will become more important when we talk about Javascript on the Web.
+
+Here is more in depth of the structure:
+```xml
+<parent attribute1='value1' class='class1 class2' id='id1'>
+  <child class='class3' id='id2'></child>
+  <child id='id3'></child>
+  <child class='class3'>
+    <grandchild></grandchild>
+    <!-- Comment comment comment -->
+  </child>
+</parent>
+```
+
+Nodes (or elements), can typically have any number of children and grandchildren. They may have distinct attributes, and all can have the class and id attributes (but don't need to). Id's should be unique (go figure), while classes can be repeated. Finally, when you see `<!-- Comment comment comment -->`, you know that there is something there as a note. Comments are ignored by the parser, so you can use them to get rid of blocks of code temporarily.
+
+Convention holds that if something is a child of another element, indent it in. This allows us to quickly scan and see what is going on in the document. Your Text Editor should be able to do this automatically (and even auto indent an entire document if it looks off).
 
 
 <a id='css'></a>
 # CSS Basics - The skin of web pages
+
+Raw html rarely looks pretty. CSS, or Cascading Style Sheets, is how we go about making them look good. CSS allows us to select elements, classes, ids, or combinations of the above and apply styles to each.
+
+### Demo
+
+Open minidemos/myFirstHtml.html in both your browser and text editor.
+
+Add the following as a new child to the `<head>` tag:
+```html
+<link rel="stylesheet" href="myFirstStylesheet.css" />
+```
+and delete the style tag. Save the page, then refresh your browser and observe the changes.
+
+In your text editor, open minidemos/myFirstStylesheet.css and take a look.
+
+Every p has been made gray, except for the ones with the class .myFirstClass which overrides the color to be purple. The id #myFirstId then overrides that, and finally, inline styling will override all of the above. Play around with the style sheet, and see what happens if you try to change the p color later in the sheet.
+
+### Thoughts
+
+CSS is cascading because every new definition will override the one above it if it has been redefined. The more specific the target, the more it will override. For example, take a look at the following css:
+
+```CSS
+/*Example 1*/
+.change {
+  color: red;
+}
+div.change {
+  color: blue;
+}
+div#id.change {
+  color: purple;
+}
+
+/*Example 2*/
+div#id.change.other {
+  color: red;
+}
+
+/*Example 3*/
+div div.change p span {
+  color: magenta;
+}
+```
+In example 1, anything with the class of 'change' would have the font render red, unless if the element was a div. If it is a div, then the font will be blue, unless the div had the id of 'id'. That div will have purple font.
+
+In example 2, we are changing the div with id of 'id', and classes 'change' and 'other' to have red font.
+
+In example 3, any span inside of a p in a div classed 'change' inside of a div will have a font color of magenta.
+
+CSS can get complicated quickly if care isn't taken when using classes and id's. It may be easier to change example 3 to the following:
+
+```CSS
+span#customSpan {
+  color: magenta;
+}
+```
+and give the span an id, or to just use inline styling.
+
+### Variables
+
+Sometimes with CSS, we are using the same color, font, or other value repeatedly. Rather than typing it repeatedly, then replacing each occurrence when that value needs to change, we can assign that value to a variable. Add the following to the top of your CSS file:
+
+```CSS
+:root{
+  --firstColor: red;
+  --secondColor: blue;
+}
+```
+
+Now, you can use the variable like this:
+
+```CSS
+p {
+  color: var(--firstColor);
+  fill: var(--secondColor);
+}
+
+p.reverse {
+  color: var(--secondColor);
+  fill: var(--firstColor);
+}
+```
+
+When those colors need to be changed to be something less ugly, you can change it once, and have it apply everywhere (a concept to remember...).
+
 
 <a id='nodebasics'></a>
 # Node.js Basics
