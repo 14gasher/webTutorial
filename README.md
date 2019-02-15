@@ -12,11 +12,11 @@ __        __   _       _____      _             _       _
 1. [Introduction](#intro)
 1. [Setup](#setup)
 1. [Bash Basics](#bashbasics)
-1. [Git Basics]('#gitbasics')
-1. [HTML Basics]('#html')
-1. [CSS Basics]('#css')
-1. [Javascript Basics]('#jsbasics')
-1. [Node.js Basics]('#nodebasics')
+1. [Git Basics](#gitbasics)
+1. [HTML Basics](#html)
+1. [CSS Basics](#css)
+1. [Javascript Basics](#jsbasics)
+1. [Node.js Basics](#nodebasics)
 
 <a id='intro'></a>
 # Introduction
@@ -331,8 +331,92 @@ First things first, variables. A variable is something that holds a value. We ca
 
 ```js
 const a = 1
+let b = a + 1
+var c = a + b
+// This is a comment by the way...
 
+/*
+And
+This
+is
+a
+multiline
+comment.
+*/
 ```
+
+`const` means that the variable is constant, and cannot be reassigned. Always use this when possible as it makes the code easy to understand and prevents errors.
+
+`let` means that the variable may be reassigned. Use this when you can't use `const`.
+
+`var` is like `let`, but uses something called function scoping... Just never use it. Ever. Replace it with `const` and `let`.
+
+### Loops
+Loops let us do things repeatedly in javascript.
+
+**while** is the simplest loop. While the condition is true, repeat
+
+```js
+let a = 1
+while(a < 5) { // Condition is in the parenthesis
+  a = a * 2 // this looks weird, but we are reassigning a to be whatever a was times 2
+}
+/*
+a: 1 < 5 === true, so repeat
+a: 2 < 5 === true, so repeat
+a: 4 < 5 === true, so repeat
+a: 8 < 5 === false, so stop
+*/
+```
+
+**for** is one of the most used loops. Usually if you want to do something a fixed number of times.
+```js
+let a = 1
+// Define variable; condition; how variable changes
+for(let index = 0; index < 3; index += 1) {
+  a *= 2  // This is a shorthand of saying a = a * 2
+}
+
+/*
+index: 0 < 3 === true, so a *=2 (now 2)
+index: 1 < 3 === true, so a *=2 (now 4)
+index: 2 < 3 === true, so a *=2 (now 8)
+index: 3 < 3 === false, so end
+a === 8
+*/
+```
+
+### Control Flow
+Sometimes, we want to do different things based on what we received.
+
+**if / else if / else** The most common way to move control
+```js
+if(someCondition) {
+  // Do stuff
+} else if (anotherCondition) {
+  // Do something else
+} else {
+  // If all else fails, we do this
+}
+// Note that I can get rid of the else if and else, or add more else ifs when needed.
+```
+
+**switch** Perfect for when you expect certain values
+```js
+switch(val) {
+  case 'steven': // if val is 'steven'
+    // do stuff
+    break
+  case 'george': // if val is 'george'
+    // do stuff
+    break
+  default:       // if val is something else
+    // do stuff
+}
+```
+
+### Funtions
+
 
 
 <a id='nodebasics'></a>
